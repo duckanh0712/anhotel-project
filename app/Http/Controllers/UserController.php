@@ -1,0 +1,159 @@
+<?php
+
+namespace App\Http\Controllers;
+
+
+
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = User::select('id','name','phone','email','birthday','sex')->latest()->paginate(20);
+
+        return view('admin.users.index', [ 'data' => $users]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+//        $request->validate(
+//            [
+//                'name' => 'required',
+//                'email' => 'required|email',
+//            ],
+//            [
+//                'name.required' => 'Tên không được để trống',
+//                'email.required' => 'Email không được để trống',
+//                'email.email' => 'Email chưa đúng định dạng'
+//            ]);
+
+        $users = new User();
+        $users->name = $request->name;
+        $users->username = $request->username;
+        $users->email = $request->email;
+        $users->phone = $request->phone;
+        $users->birthday = $request->birthday;
+        $users->sex = $request->sex;
+        $users->password = bcrypt($request->password);
+
+        $users->save();
+
+        return redirect()->route('admin.user.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+        $users = User::findorFail($id);
+
+        return view('admin.users.edit',['data' => $users]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $users = User::findorFail($id);
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->username = $request->username;
+        $users->phone = $request->phone;
+        $users->birthday = $request->birthday;
+        $users->sex = $request->sex;
+        $users->password = bcrypt($request->password);
+        $users->save();
+
+        if (  $users->save()) {
+            Session::flash('success', $users->name.' cập nhật thành công!');
+            return redirect()->route('admin.user.index');
+        }else {
+            Session::flash('error', $users->name.' cập nhật thất bại!');
+            return redirect()->route('admin.user.index');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+
+        User::destroy($id);
+        // Trả về dữ liệu json và trạng thái kèm theo thành công là 200
+        $dataResp = [
+            'status' => true
+        ];
+
+        return response()->json($dataResp, 200);
+
+    }
+    public function login () {
+        return view('admin.login');
+    }
+
+    public function postLogin (Request $request){
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->route('dashboard');
+        }
+
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('admin.login');
+    }
+}
