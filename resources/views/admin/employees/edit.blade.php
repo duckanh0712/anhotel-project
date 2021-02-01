@@ -3,10 +3,10 @@
 @section('content')
     <div class="card card-info col-6" >
         <div class="card-header">
-            <h3 class="card-title">Sửa khách hàng</h3>
+            <h3 class="card-title">Sửa nhân viên</h3>
         </div>
         <div class="">
-            <form action="{{route('admin.user.update',[ 'user' => $data->id])}}" method="post">
+            <form action="{{route('admin.employee.update',[ 'user' => $data->id])}}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="input-group mb-3 mt-3">

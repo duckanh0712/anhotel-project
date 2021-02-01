@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Quản lý khách hàng')
+@section('title','Quản lý nhân viên')
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -16,10 +16,10 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-            <h3 class="card-title">Danh sách khách hàng</h3>
+            <h3 class="card-title">Danh sách nhân viên</h3>
 
             <div class="card-tools">
-                <a href="{{route('admin.user.create')}}" class="btn btn-primary">Thêm mới</a>
+                <a href="{{route('admin.employee.create')}}" class="btn btn-primary">Thêm mới</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -47,7 +47,9 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->sex }}</td>
                     <td>
-                        <a href="{{ route('admin.user.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
+                        <a href="{{ route('admin.employee.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
+                        <button href="javascript:void(0)" onclick="destroy( {{$item->id , 'employee'}})" class="btn btn-danger fas fa-trash"> Xóa</button>
+
                     </td>
                 </tr>
                 @endforeach

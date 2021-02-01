@@ -14,13 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', 'AdminController@index')->name('dashboard')->middleware('CheckLogin');
+Route::get('/admin', 'AdminController@index')->name('dashboard');
 Route::get('/login', 'UserController@login')->name('admin.login');
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::post('/login/post', 'UserController@postLogin')->name('admin.postLogin');
-Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin'], function (){
+Route::group(['prefix' => 'admin', 'as'=> 'admin.', ], function (){
     Route::resource('/employee','EmployeeController');
     Route::resource('/user','UserController');
+    Route::resource('/room','RoomController');
 });
 
 

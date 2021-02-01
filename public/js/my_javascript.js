@@ -6,13 +6,13 @@ $.ajaxSetup({
 
 
 /* Xóa một row  */
-function destroy(id) {
+function destroy(id,model) {
     console.log(base_url)
     var result = confirm("Bạn có chắc chắn muốn xóa ?");
     console.log(result)
     if (result) { // neu nhấn == ok , sẽ send request ajax
         $.ajax({
-            url: base_url + '/admin/user/'+id,
+            url: base_url + '/admin/'+model+'/'+id,
             type: 'DELETE',
             data: {}, // dữ liệu truyền sang nếu có
             dataType: "json", // kiểu dữ liệu trả về

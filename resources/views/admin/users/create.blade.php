@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
-@section('title','Thêm mới nhân viên');
+@section('title','Thêm mới khách hàng');
 @section('content')
     <div class="card card-info col-6" >
         <div class="card-header">
-            <h3 class="card-title">Thêm mới nhân viên</h3>
+            <h3 class="card-title">Thêm mới khách hàng </h3>
         </div>
         <div class="">
             <form action="{{route('admin.user.store')}}" method="post">
