@@ -12,16 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
-Route::get('/admin', 'AdminController@index')->name('dashboard');
-Route::get('/login', 'UserController@login')->name('admin.login');
+Route::get('/admin', 'AdminController@index')->name('dashboard')->middleware('CheckLogin');
+Route::get('/login', 'AdminController@showAdminLoginForm')->name('admin.login');
+Route::post('/login', 'AdminController@postLogin')->name('admin.postLogin');
+Route::post('/register', 'UserController@store')->name('admin.register');
+Route::get('/home', 'ClientController@index')->name('client.home');
 Route::get('/logout', 'UserController@logout')->name('logout');
-Route::post('/login/post', 'UserController@postLogin')->name('admin.postLogin');
-Route::group(['prefix' => 'admin', 'as'=> 'admin.', ], function (){
+Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin'], function (){
     Route::resource('/employee','EmployeeController');
     Route::resource('/user','UserController');
     Route::resource('/room','RoomController');
+
 });
 
 

@@ -19,7 +19,9 @@ class CheckLogin
         if (Auth::check()){
 
             return $next($request);
+
         }else{
+
             return redirect()->route('admin.login');
         }
 

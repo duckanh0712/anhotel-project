@@ -14,6 +14,8 @@ class RoomController extends Controller
         return view('admin.rooms.index', [ 'data' => $rooms ]);
     }
 
+
+
     public function create () {
 
         return view('admin.rooms.create');
@@ -53,10 +55,9 @@ class RoomController extends Controller
     }
 
     public function update (Request $request, $id) {
-
         $room = Room::findorFail($id);
         $room->name = $request->name;
-        $room->state = true;
+        $room->state = $request->state;
         $room->description = $request->description;
         $room->category = $request->category;
 

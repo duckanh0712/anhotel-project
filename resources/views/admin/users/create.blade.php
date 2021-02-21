@@ -6,7 +6,7 @@
             <h3 class="card-title">Thêm mới khách hàng </h3>
         </div>
         <div class="">
-            <form action="{{route('admin.user.store')}}" method="post">
+            <form action="{{route('admin.employee.store')}}" method="post">
                 @csrf
                 <div class="input-group mb-3 mt-3">
                     <input type="text" class="form-control" name="name" id="name" placeholder="Họ và Tên">
@@ -56,14 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Nhập lại mật khẩu">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
+                <input type="hidden" name="role" id="role" value="GUEST">
                 <div class="row">
                     <div class="col-8">
                     <div class="form-group">

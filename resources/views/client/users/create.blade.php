@@ -3,10 +3,10 @@
 @section('content')
     <div class="card card-info col-6" >
         <div class="card-header">
-            <h3 class="card-title">Thêm mới nhân viên </h3>
+            <h3 class="card-title">Thêm mới khách hàng </h3>
         </div>
         <div class="">
-            <form action="{{route('admin.employee.store')}}" method="post">
+            <form action="{{route('admin.user.store')}}" method="post">
                 @csrf
                 <div class="input-group mb-3 mt-3">
                     <input type="text" class="form-control" name="name" id="name" placeholder="Họ và Tên">
@@ -16,7 +16,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
                     <div class="input-group-append">
@@ -57,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="role" id="role" value="EMPLOYEE">
+                <input type="hidden" name="role" id="role" value="GUEST">
                 <div class="row">
                     <div class="col-8">
                     <div class="form-group">
@@ -73,7 +72,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Tạo </button>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                     <!-- /.col -->
                     </div>

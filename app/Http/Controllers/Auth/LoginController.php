@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -32,8 +34,26 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+
+
+//    public function showAdminLoginForm()
+//    {
+//
+//        return view('auth.login',[ 'role' => 'admin']);
+//    }
+//
+//    public function adminLogin(Request $request)
+//    {
+//
+//
+//        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+////            dd('ok');
+//            return redirect()->route('dashboard');
+//        }
+//        else{
+//            dd('failed');
+//            return back()->withInput($request->only('email'));
+//        }
+//
+//    }
 }

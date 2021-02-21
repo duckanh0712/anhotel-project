@@ -43,13 +43,13 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->birthday }}</td>
-                    <td>{{ $item->phone }}</td>
+                    <td>{{ '0'.$item->phone }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->sex }}</td>
                     <td>
                         <a href="{{ route('admin.employee.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
-                        <button href="javascript:void(0)" onclick="destroy( {{$item->id , 'employee'}})" class="btn btn-danger fas fa-trash"> Xóa</button>
-
+{{--                        <button href="javascript:void(0)" onclick="destroy( {{$item->id , 'employee'}})" class="btn btn-danger fas fa-trash"> Xóa</button>--}}
+{{----}}
                     </td>
                 </tr>
                 @endforeach

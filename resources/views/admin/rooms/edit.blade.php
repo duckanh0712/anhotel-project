@@ -23,11 +23,11 @@
             <div class="form-group">
                 <label for="inputName">Trạng thái </label>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio1" value="1" name="customRadio" checked="">
+                    <input class="custom-control-input" type="radio" id="customRadio1" value="1" name="state" checked="">
                     <label for="customRadio1" class="custom-control-label">Rảnh </label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio2"  value="2" name="customRadio" >
+                    <input class="custom-control-input" type="radio" id="customRadio2"  value="2" name="state">
                     <label for="customRadio2" class="custom-control-label">Bận </label>
                 </div>
             </div>

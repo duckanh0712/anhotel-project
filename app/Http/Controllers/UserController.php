@@ -18,10 +18,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('id','name','phone','email','birthday','sex')->latest()->paginate(20);
+//        dd(12131);
+
+        $users = User::where('role' , 'GUEST')->latest()->paginate(20);
 
         return view('admin.users.index', [ 'data' => $users]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,29 +45,35 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-//        $request->validate(
-//            [
-//                'name' => 'required',
-//                'email' => 'required|email',
-//            ],
-//            [
-//                'name.required' => 'Tên không được để trống',
-//                'email.required' => 'Email không được để trống',
-//                'email.email' => 'Email chưa đúng định dạng'
-//            ]);
-
+        $request->validate(
+            [
+                'name' => 'required',
+                'username' => 'required|unique:users',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'Tên không được để trống',
+                'email.required' => 'Email không được để trống',
+                'email.email' => 'Email chưa đúng định dạng',
+                'password.required' => 'Mật khẩu không được để trống',
+                'password.min' => 'Mật khẩu tối thiểu 6 ký tự',
+                'username.unique' => 'tài khoản đã tồn tại'
+            ]);
+//        dd($request->all());
         $users = new User();
         $users->name = $request->name;
         $users->username = $request->username;
         $users->email = $request->email;
         $users->phone = $request->phone;
-        $users->birthday = $request->birthday;
-        $users->sex = $request->sex;
+//        $users->birthday = $request->birthday;
+//        $users->sex = $request->sex;
+        $users->role = 'GUEST';
         $users->password = bcrypt($request->password);
 
         $users->save();
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.login');
     }
 
     /**

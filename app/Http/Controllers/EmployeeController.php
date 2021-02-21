@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
 
+use App\Employee;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
+    use AuthenticatesUsers;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::select('id','name','phone','email','birthday','sex')->latest()->paginate(20);
+
+        $employees = Employee::where('role' , 'EMPLOYEE')->latest()->paginate(20);
 
         return view('admin.employees.index', [ 'data' => $employees]);
     }
@@ -25,7 +28,7 @@ class EmployeeController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+//     */
     public function create()
     {
         return view('admin.employees.create');
@@ -50,7 +53,7 @@ class EmployeeController extends Controller
 //                'email.required' => 'Email không được để trống',
 //                'email.email' => 'Email chưa đúng định dạng'
 //            ]);
-
+//dd($request->all());
         $employee = new Employee();
         $employee->name = $request->name;
         $employee->username = $request->username;
@@ -58,6 +61,7 @@ class EmployeeController extends Controller
         $employee->phone = $request->phone;
         $employee->birthday = $request->birthday;
         $employee->sex = $request->sex;
+        $employee->role = $request->role;
         $employee->password = bcrypt($request->password);
 
         $employee->save();
@@ -117,15 +121,32 @@ class EmployeeController extends Controller
             return redirect()->route('admin.employee.index');
         }
     }
+//
+//    /**
+//     * Remove the specified resource from storage.
+//     *
+//     * @param  int  $id
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function destroy($id)
+//    {
+//        //
+//    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
+//    public function guard()
+//    {
+//        return Auth::guard('admin');
+//    }
+//
+//    public function loginForm ()
+//    {
+//        return view('auth.login');
+//    }
+//
+//    public function login()
+//    {
+//
+//    }
+
 }
