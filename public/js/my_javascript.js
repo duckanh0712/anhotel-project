@@ -4,6 +4,11 @@ $.ajaxSetup({
     }
 });
 
+function roomBook(id) {
+    $('#room_id').val(id);
+    $('#roombook_modal').modal('show');
+
+}
 
 /* Xóa một row  */
 function destroy(id,model) {

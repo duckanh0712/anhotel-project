@@ -34,6 +34,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.room-book.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Quản lý đặt phòng
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.employee.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -49,6 +57,7 @@
                         </p>
                     </a>
                 </li>
+
 
             </ul>
         </nav>

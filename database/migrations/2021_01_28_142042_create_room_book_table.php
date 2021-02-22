@@ -14,11 +14,12 @@ class CreateRoomBookTable extends Migration
     public function up()
     {
         Schema::create('room_book', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->autoIncrement();
+            $table->integer('room_id');
             $table->date('start_date');
-            $table->string('state');
+            $table->integer('state');
             $table->bigInteger('user_id');
-            $table->bigInteger('employee_id');
+            $table->bigInteger('employee_id')->nullable();
             $table->timestamps();
         });
     }
