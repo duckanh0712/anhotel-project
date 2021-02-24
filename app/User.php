@@ -17,4 +17,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function roomBook ()
+    {
+        return $this->hasMany('App\RoomBook');
+    }
 }

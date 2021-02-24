@@ -48,7 +48,7 @@
                     <td>{{ $item->sex }}</td>
                     <td>
                         <a href="{{ route('admin.user.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
-                        <a href="javascript:void(0)" onclick="destroy( {{$item->id, 'user'}})" class="btn btn-danger"> Xóa</a>
+{{--                        <a href="javascript:void(0)" onclick="destroy( {{$item->id, 'user'}})" class="btn btn-danger"> Xóa</a>--}}
                     </td>
                 </tr>
                 @endforeach

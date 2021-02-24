@@ -37,19 +37,21 @@
                     <tr id="{{'tr-'.$item->id}}">
 
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $item->room_id }}</td>
+                        <td>{{ $item->room->name }}</td>
                         <td class="project-state">
-                            @if( $item->state == 1)duyệt
-                                <span class="badge badge-success">Rảnh </span>
+                            @if( $item->state == 1)
+                                <span class="badge badge-success">Duyệt </span>
                             @else
                                 <span class="badge badge-danger">Chờ </span>
                             @endif
                         </td>
 
-                        <td>{{ $item->user_id }}</td>
-                        <td>{{ $item->employee_id ? $item->employee_id : ''  }}</td>
+                        <td>{{ $item->khachhang->name }}</td>
+                        <td>{{ $item->employee_id ? $item->employee->name : ''  }}</td>
                         <td>
-                            <a href="" class="btn btn-primary fas fa-edit"> Duyệt</a>
+                            @if(!$item->employee_id)
+                            <a href="javascript:void(0)" onclick="confirm({{$item->id}})" class="btn btn-primary fas fa-edit"> Duyệt</a>
+                            @endif
 {{--                            <a href="{{ route('admin.room.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>--}}
 {{--                            <a href="javascript:void(0)" onclick="destroy( {{$item->id}},'room')" class="btn btn-danger "> Xóa</a>--}}
                         </td>

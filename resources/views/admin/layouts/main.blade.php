@@ -50,6 +50,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@include('components.confirm')
 <script type="text/javascript">
     var base_url = '{{ url('/') }}';
 </script>

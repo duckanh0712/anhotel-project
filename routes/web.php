@@ -21,6 +21,7 @@ Route::get('/register', 'ClientController@registerForm')->name('register');
 Route::post('/register', 'UserController@store')->name('admin.register');
 Route::get('/', 'ClientController@index')->name('client.home');
 Route::get('/logout', 'UserController@logout')->name('logout');
+Route::post('admin/room-book/approve', 'RoomBookcontroller@approveRoomBook')->name('admin.room-book.approve')->middleware('CheckLogin');
 Route::post('/room-book/register', 'ClientController@roomBookStore')->name('user.room.book')->middleware('CheckLogin');
 Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin'], function (){
     Route::resource('/employee','EmployeeController');
@@ -29,5 +30,8 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin'
     Route::resource('/room-book','RoomBookController');
 });
 
-
+Route::get('/lienket', function () {
+    $data = App\RoomBook::find(1)->khachhang->toArray();
+    dd($data);
+} );
 

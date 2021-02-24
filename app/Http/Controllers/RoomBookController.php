@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RoomBook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoomBookController extends Controller
 {
@@ -68,9 +69,27 @@ class RoomBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+//        $id = $request->id;
+//        $roomBook = RoomBook::findorFail($id);
+//        $roomBook->state = 1;
+//        $roomBook->save();
+//
+//        return redirect()->route('admin.room_book.index');
+    }
+
+    public function approveRoomBook(Request $request)
+    {
+
+        $id = $request->id_room_book;
+        $roomBook = RoomBook::findorFail($id);
+        $roomBook->state = 1;
+        $roomBook->employee_id = Auth::user()->id;
+
+        $roomBook->save();
+
+        return redirect()->route('admin.room-book.index');
     }
 
     /**

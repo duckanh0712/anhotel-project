@@ -9,6 +9,11 @@ function roomBook(id) {
     $('#roombook_modal').modal('show');
 
 }
+function confirm(id) {
+    $('#id_room_book').val(id);
+    $('#modal-confirm').modal('show');
+
+}
 
 /* Xóa một row  */
 function destroy(id,model) {
