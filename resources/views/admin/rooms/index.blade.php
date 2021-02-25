@@ -32,6 +32,7 @@
                     <th>Trạng thái</th>
                     <th>Loại phòng</th>
                     <th>Mô tả</th>
+                    <th>Giá</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -49,8 +50,9 @@
                             @endif
                         </td>
 
-                        <td>{{ $item->category }}</td>
+                        <td>{{ $item->category}}</td>
                         <td>{{ $item->description  }}</td>
+                        <td>{{number_format($item->price,0,",",".")}}</td>
                         <td>
                             <a href="{{ route('admin.room.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
                             <a href="javascript:void(0)" onclick="destroy( {{$item->id}},'room')" class="btn btn-danger "> Xóa</a>

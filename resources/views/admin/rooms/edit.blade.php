@@ -34,9 +34,9 @@
             <div class="form-group">
                 <label>Loại Phòng</label>
                 <select class="form-control" id="category" name="category">
-                    <option value="1">Đơn</option>
-                    <option value="2">Đôi</option>
-                    <option value="3">Thương gia</option>
+                    < <option value="Đơn">Đơn</option>
+                    <option value="Đôi">Đôi</option>
+                    <option value="Thương gia">Thương gia</option>
 
                 </select>
             </div>

@@ -17,8 +17,9 @@ class CreateRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->integer('state');
+            $table->integer('price');
             $table->string('description');
-            $table->integer('category');
+            $table->string('category');
             $table->timestamps();
         });
     }

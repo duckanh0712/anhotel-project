@@ -22,6 +22,19 @@
 
                     <h2>Hệ thống phòng Anhotel</h2>
             </div>
+            @if ( Session::has('error') )
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Thông báo</h5>
+                    {{ Session::get('error') }}
+                </div>
+            @elseif( Session::has('success') )
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Thông báo </h5>
+                    {{ Session::get('success') }}
+                </div>
+            @endif
             <div class="d-flex justify-content-between m-1">
 
                     @if((Auth::check()))

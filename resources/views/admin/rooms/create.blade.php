@@ -12,30 +12,34 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Mã phòng</label>
-                <input type="text" class="form-control" id="name"  name="name" >
+                <input type="text" class="form-control" id="name"  required name="name" >
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Mô tả</label>
-                <input type="text" class="form-control" id="description" name="description">
+                <input type="text" class="form-control" id="description" required name="description">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Giá</label>
+                <input type="number" class="form-control" id="price" required name="price">
             </div>
             <div class="form-group">
                 <label for="inputName">Trạng thái</label>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio1" value="1" name="state" checked="">
+                    <input class="custom-control-input" type="radio" id="customRadio1" value="1" required name="state" checked="">
                     <label for="customRadio1" class="custom-control-label">Rảnh</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio2"  value="2" name="state" >
+                    <input class="custom-control-input" type="radio" id="customRadio2"  value="2" required name="state" >
                     <label for="customRadio2" class="custom-control-label">Bận</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Loại Phòng</label>
-                <select class="form-control" id="category" name="category">
-                    <option value="1">Đơn</option>
-                    <option value="2">Đôi</option>
-                    <option value="3">Thương gia</option>
+                <select class="form-control" id="category" required name="category">
+                    <option value="Đơn">Đơn</option>
+                    <option value="Đôi">Đôi</option>
+                    <option value="Thương gia">Thương gia</option>
                 </select>
             </div>
 

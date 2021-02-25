@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Room;
 use App\RoomBook;
 use Illuminate\Http\Request;
@@ -33,6 +33,14 @@ class ClientController extends Controller
             $room = Room::findorFail($request->room_id);
             $room->state = 0;
             $room->save();
+            if ( $room->save()){
+
+                Session::flash('success',' Đăng ký phòng thành công!');
+                return redirect()->route('client.home');
+            }else {
+                Session::flash('error', ' Đăng ký phòng thất bại!');
+                return redirect()->route('client.home');
+            }
             return redirect()->route('client.home');
         }
 

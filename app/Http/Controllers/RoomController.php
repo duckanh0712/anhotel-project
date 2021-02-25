@@ -38,6 +38,7 @@ class RoomController extends Controller
 
        $room = new Room();
        $room->name = $request->name;
+       $room->price = $request->price;
        $room->state = true;
        $room->description = $request->description;
        $room->category = $request->category;
