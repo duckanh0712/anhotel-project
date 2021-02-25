@@ -5,6 +5,16 @@
     <div class="card-header">
         <h3 class="card-title">Tạo phòng</h3>
     </div>
+    <div class="box-body">
+        @if($errors->any())
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-warning"></i> Lỗi!</h4>
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+    @endif
     <!-- /.card-header -->
     <!-- form start -->
     <form action="{{ route('admin.room.store') }}" method="post">

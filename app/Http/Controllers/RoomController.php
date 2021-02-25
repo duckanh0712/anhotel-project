@@ -24,16 +24,15 @@ class RoomController extends Controller
 
     public function store ( Request $request) {
 //        dd($request->all());
-//        $request->validate(
-//            [
-//                'name' => 'required',
-//                'email' => 'required|email',
-//            ],
-//            [
-//                'name.required' => 'Tên không được để trống',
-//                'email.required' => 'Email không được để trống',
-//                'email.email' => 'Email chưa đúng định dạng'
-//            ]);
+        $request->validate(
+            [
+                'name' => 'required|unique:rooms',
+
+            ],
+            [
+                'name.required' => 'Mã phòng không được để trống',
+                'name.unique' => ' Mã phòng không thể trùng nhau'
+            ]);
 
 
        $room = new Room();

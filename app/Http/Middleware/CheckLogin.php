@@ -17,10 +17,12 @@ class CheckLogin
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth::user()->role == 'GUEST'){
-                return redirect()->route('client.home');
-            }else{
+            if (Auth::user()->role !== 'GUEST' || $request->path() == 'room-book/register' ){
                 return $next($request);
+
+            }else{
+                dd($request->path());
+                return redirect()->route('client.home');
             }
 
 

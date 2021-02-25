@@ -86,9 +86,7 @@ class RoomBookController extends Controller
         $roomBook = RoomBook::findorFail($id);
         $roomBook->state = 1;
         $roomBook->employee_id = Auth::user()->id;
-
         $roomBook->save();
-
         return redirect()->route('admin.room-book.index');
     }
 

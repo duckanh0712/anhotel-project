@@ -43,7 +43,7 @@
                     </div>
                     <a class="btn btn-primary" href="{{ route('logout') }}" >Đăng xuất</a>
                     @else
-                        <p>Bạn chưa đăng nhập</p>
+                        <p>Bạn chưa <a href="{{ route('admin.login') }}">đăng nhập</a></p>
                     @endif
 
 
@@ -63,6 +63,7 @@
                                                 <div class="col-7">
                                                     <h2 class="lead"><b>{{ $room->name }}</b></h2>
                                                     <p class="text-muted text-sm"><b>Thông tin: </b> {{ $room->description }} </p>
+                                                    <p class="text-muted text-sm"><b>Giá: </b> {{number_format($room->price,0,",",".").'đ '}} </p>
                                                     <ul class="ml-4 mb-0 fa-ul text-muted">
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Tình trạng: tốt</li>
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Loại phòng: {{ $room->category }}</li>
