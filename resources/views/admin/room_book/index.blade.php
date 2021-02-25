@@ -50,9 +50,11 @@
                         <td>{{ $item->employee_id ? $item->employee->name : ''  }}</td>
                         <td>
                             @if(!$item->employee_id)
-                            <a href="javascript:void(0)" onclick="confirm({{$item->id}})" class="btn btn-primary fas fa-edit"> Duyệt</a>
+                            <a href="javascript:void(0)" onclick="confirm({{$item->id}})" class="btn btn-primary"> Duyệt</a>
                             @endif
-{{--                            <a href="{{ route('admin.room.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>--}}
+                                @if( $item->state == 1)
+                            <a href="{{ route('admin.room_book.pay.form',[ 'id' => $item->id]) }}"   class="btn btn-primary"> Thanh toán</a>
+                                @endif
 {{--                            <a href="javascript:void(0)" onclick="destroy( {{$item->id}},'room')" class="btn btn-danger "> Xóa</a>--}}
                         </td>
                     </tr>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\RoomBook;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,10 +13,26 @@ class AdminController extends Controller
         return view('admin.layouts.main');
     }
 
-        public function showAdminLoginForm()
+    public function showAdminLoginForm()
     {
 
         return view('auth.login');
+    }
+
+    public function payment ($id) {
+
+        $roombook = RoomBook::findorFail($id);
+        $start_date = new Carbon($roombook->start_date);
+        $timeNow = Carbon::now();
+        $number =  $timeNow->diffInDays($start_date);
+        $price = $roombook->room->price;
+        $totalPrice = $number * $price;
+        $roombook->timeNow = $timeNow->toDateString();
+        $roombook->totalPrice = $totalPrice;
+
+        dd($roombook);
+
+
     }
 
     public function postLogin(Request $request)

@@ -23,11 +23,12 @@ Route::get('/', 'ClientController@index')->name('client.home');
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::post('admin/room-book/approve', 'RoomBookcontroller@approveRoomBook')->name('admin.room-book.approve')->middleware('CheckLogin');
 Route::post('/room-book/register', 'ClientController@roomBookStore')->name('user.room.book')->middleware('CheckLogin');
-Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin'], function (){
+Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin' ], function (){
     Route::resource('/employee','EmployeeController');
     Route::resource('/user','UserController');
     Route::resource('/room','RoomController');
     Route::resource('/room-book','RoomBookController');
+    Route::get('/room-book/pay/{id}', 'AdminController@payment' )->name('room_book.pay.form');
 });
 
 Route::get('/lienket', function () {

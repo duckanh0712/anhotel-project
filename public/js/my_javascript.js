@@ -14,6 +14,10 @@ function confirm(id) {
     $('#modal-confirm').modal('show');
 
 }
+function pay(item) {
+    console.log(item);
+
+}
 
 /* Xóa một row  */
 function destroy(id,model) {
