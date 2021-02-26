@@ -19,21 +19,7 @@ class AdminController extends Controller
         return view('auth.login');
     }
 
-    public function payment ($id) {
 
-        $roombook = RoomBook::findorFail($id);
-        $start_date = new Carbon($roombook->start_date);
-        $timeNow = Carbon::now();
-        $number =  $timeNow->diffInDays($start_date);
-        $price = $roombook->room->price;
-        $totalPrice = $number * $price;
-        $roombook->timeNow = $timeNow->toDateString();
-        $roombook->totalPrice = $totalPrice;
-
-        dd($roombook);
-
-
-    }
 
     public function postLogin(Request $request)
     {
@@ -50,6 +36,9 @@ class AdminController extends Controller
 
         // check success
         if (Auth::attempt($data)) {
+            if (Auth::user()->state == 0){
+                return redirect()->route('admin.login')->with('erorr' , 'tài khoản đã bị khóa hãy liên lạc với bạn quản trị để giải quyết');
+            }
             if (Auth::user()->role != 'GUEST') {
                 return redirect()->route('dashboard');
             }else{
@@ -58,7 +47,7 @@ class AdminController extends Controller
 
         }
         else {
-            return redirect()->back()->with('msg', 'tên đăng nhập  hoặc mật khẩu không chính xác');
+            return redirect()->back()->with('error', 'Tên đăng nhập  hoặc mật khẩu không chính xác');
         }
 
     }

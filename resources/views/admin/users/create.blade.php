@@ -40,14 +40,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="date" class="form-control" name="birthday" id="birthday" >
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-calendar-alt"></span>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="input-group mb-3">--}}
+{{--                    <input type="date" class="form-control" name="birthday" id="birthday" >--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <div class="input-group-text">--}}
+{{--                            <span class="fas fa-calendar-alt"></span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu">
                     <div class="input-group-append">
@@ -59,20 +59,20 @@
                 <input type="hidden" name="role" id="role" value="GUEST">
                 <div class="row">
                     <div class="col-8">
-                    <div class="form-group">
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" id="customRadio1" value="Nam" name="sex">
-                            <label for="customRadio1" class="custom-control-label">Nam</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" id="customRadio2" value="Nữ" name="sex" checked="">
-                            <label for="customRadio2" class="custom-control-label">Nữ</label>
-                        </div>
+{{--                    <div class="form-group">--}}
+{{--                        <div class="custom-control custom-radio">--}}
+{{--                            <input class="custom-control-input" type="radio" id="customRadio1" value="Nam" name="sex">--}}
+{{--                            <label for="customRadio1" class="custom-control-label">Nam</label>--}}
+{{--                        </div>--}}
+{{--                        <div class="custom-control custom-radio">--}}
+{{--                            <input class="custom-control-input" type="radio" id="customRadio2" value="Nữ" name="sex" checked="">--}}
+{{--                            <label for="customRadio2" class="custom-control-label">Nữ</label>--}}
+{{--                        </div>--}}
 
-                    </div>
+{{--                    </div>--}}
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block">Tạo</button>
                     </div>
                     <!-- /.col -->
                     </div>

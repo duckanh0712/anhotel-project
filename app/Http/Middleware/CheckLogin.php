@@ -16,7 +16,7 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()){
+        if (Auth::check() ){
             if (Auth::user()->role !== 'GUEST' || $request->path() == 'room-book/register' ){
                 return $next($request);
 

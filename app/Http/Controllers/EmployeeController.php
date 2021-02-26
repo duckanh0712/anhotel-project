@@ -59,8 +59,8 @@ class EmployeeController extends Controller
         $employee->username = $request->username;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
-        $employee->birthday = $request->birthday;
-        $employee->sex = $request->sex;
+//        $employee->birthday = $request->birthday;
+//        $employee->sex = $request->sex;
         $employee->role = $request->role;
         $employee->password = bcrypt($request->password);
 

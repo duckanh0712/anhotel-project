@@ -58,7 +58,7 @@ class UserController extends Controller
                 'email.email' => 'Email chưa đúng định dạng',
                 'password.required' => 'Mật khẩu không được để trống',
                 'password.min' => 'Mật khẩu tối thiểu 6 ký tự',
-                'username.unique' => 'tài khoản đã tồn tại'
+                'username.unique' => 'Tên đăng nhập đã tồn tại'
             ]);
 //        dd($request->all());
         $users = new User();
@@ -72,8 +72,13 @@ class UserController extends Controller
         $users->password = bcrypt($request->password);
 
         $users->save();
-
-        return redirect()->route('admin.login');
+        if ( $users->save()) {
+            Session::flash('success', 'Đăng kí tài khoản "'.$users->username.'" thành công');
+            return redirect()->route('admin.login');
+        }else {
+            Session::flash('error', ' Đăng ký thất bại!');
+            return redirect()->route('register');
+        }
     }
 
     /**
@@ -111,13 +116,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $users = User::findorFail($id);
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->username = $request->username;
-        $users->phone = $request->phone;
-        $users->birthday = $request->birthday;
-        $users->sex = $request->sex;
-        $users->password = bcrypt($request->password);
+       $users->state = $request->state;
         $users->save();
 
         if (  $users->save()) {

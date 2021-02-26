@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use App\RoomBook;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class RoomBookController extends Controller
 {
@@ -15,10 +18,49 @@ class RoomBookController extends Controller
      */
     public function index()
     {
-        $roombook = RoomBook::latest()->paginate(20);
+        $roombook = RoomBook::where('state' ,'<', 3 )->latest()->paginate(20);
+
         return view('admin.room_book.index', [ 'data' => $roombook]);
     }
 
+
+    public function paymentForm ($id) {
+
+        $roombook = RoomBook::findorFail($id);
+        $start_date = new Carbon($roombook->start_date);
+        $timeNow = Carbon::now();
+        $number =  $timeNow->diffInDays($start_date);
+        $price = $roombook->room->price;
+        $totalPrice = $number * $price;
+        $roombook->timeNow = $timeNow->toDateString();
+        $roombook->totalPrice = $totalPrice;
+        $roombook->cashier = Auth::user()->id;
+
+        return view('admin.room_book.pay', [ 'data' => $roombook ]);
+
+
+    }
+    public function  payment (Request  $request, $id)
+    {
+//        dd($request->all());
+        $roombook = RoomBook::findorFail($id);
+        $roombook->cashier = Auth::user()->id;
+        $roombook->end_date = $request->end_date;
+        $roombook->total_price = $request->totalPrice;
+        $roombook->state = 3;
+        $roombook->save();
+        if (  $roombook->save()) {
+            $room = Room::findorFail($roombook->room_id);
+            $room->state = 1;
+            $room-> save();
+            Session::flash('success', ' Khách hàng '.$roombook->khachhang->name.' thanh toán thành công!');
+            return redirect()->route('admin.room.index');
+        }else {
+            Session::flash('error',  'khách hàng '.$roombook->khachhang->name.' thanh toán thất bại');
+            return redirect()->route('admin.room.index');
+        }
+        return redirect()->route('admin.room-book.index');
+    }
     /**
      * Show the form for creating a new resource.
      *

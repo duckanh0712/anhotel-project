@@ -15,6 +15,36 @@
     <link rel="stylesheet" href="/backend/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
+@if ( Session::has('error') )
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <strong>{{ Session::get('error') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+@endif
+@if ( Session::has('success') )
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <strong>{{ Session::get('success') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+@endif
+@if ($errors->any())
+
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        @foreach ($errors->all() as $error)
+            <strong>{{ $error  }}</strong>
+        @endforeach
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+@endif
 <div class="login-box">
     <div class="login-logo">
         <a href="/backend/index2.html"><b>An</b>Hotel</a>
@@ -27,7 +57,7 @@
             <form action="{{route('admin.postLogin')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập" value="{{ old('username') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -35,7 +65,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="mật khẩu">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="mật khẩu" value="{{ old('password') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

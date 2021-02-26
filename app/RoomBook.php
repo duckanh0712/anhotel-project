@@ -20,4 +20,8 @@ class RoomBook extends Model
     {
         return $this->belongsTo('App\Employee', 'employee_id', 'id');
     }
+    public function payment_staff()
+    {
+        return $this->belongsTo('App\Employee', 'payment_staff', 'id');
+    }
 }

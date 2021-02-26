@@ -20,6 +20,6 @@ class User extends Authenticatable
 
     public function roomBook ()
     {
-        return $this->hasMany('App\RoomBook');
+        return $this->hasMany('App\RoomBook', 'user_id', 'id');
     }
 }

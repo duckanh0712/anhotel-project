@@ -35,13 +35,13 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
-            <div class="d-flex justify-content-between m-1">
+            <div class="d-flex justify-content-between m-5">
 
                     @if((Auth::check()))
                     <div class="info">
-                       <div class="d-flex justify-content-start "> <p class="mr-1">Khách hàng: </p><a href="/backend/#" class="d-block">{{ Auth::user()->name }}</a></div>
+                       <div class="d-flex justify-content-start "> <p class="mr-1">Khách hàng: </p><a href="{{route('client.profile',['id' => Auth::user()->id ])}}" class="d-block">{{ Auth::user()->name }}</a></div>
                     </div>
-                    <a class="btn btn-primary" href="{{ route('logout') }}" >Đăng xuất</a>
+                    <a class="" href="{{ route('logout') }}" >Đăng xuất</a>
                     @else
                         <p>Bạn chưa <a href="{{ route('admin.login') }}">đăng nhập</a></p>
                     @endif
@@ -61,7 +61,7 @@
                                         <div class="card-body pt-0">
                                             <div class="row">
                                                 <div class="col-7">
-                                                    <h2 class="lead"><b>{{ $room->name }}</b></h2>
+                                                    <h2 class="lead"><b>{{ 'Phòng: '.$room->name }}</b></h2>
                                                     <p class="text-muted text-sm"><b>Thông tin: </b> {{ $room->description }} </p>
                                                     <p class="text-muted text-sm"><b>Giá: </b> {{number_format($room->price,0,",",".").'đ '}} </p>
                                                     <ul class="ml-4 mb-0 fa-ul text-muted">

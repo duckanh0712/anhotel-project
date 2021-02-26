@@ -27,7 +27,7 @@
                     <th>STT</th>
                     <th>Phòng</th>
                     <th>Trạng thái</th>
-                    <th>tên khách hàng</th>
+                    <th>Tên khách hàng</th>
                     <th>Người duyệt</th>
                     <th></th>
                 </tr>

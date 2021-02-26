@@ -32,6 +32,7 @@
                     <th>Ngày sinh</th>
                     <th>SĐT</th>
                     <th>Email</th>
+                    <th>Tình trạng</th>
                     <th>Giới tính</th>
                     <th></th>
                 </tr>
@@ -42,10 +43,11 @@
 
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->birthday }}</td>
+                    <td>{{ $item->birthday ? $item->birthday : '--/--/----' }}</td>
                     <td>{{ '0'.$item->phone }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->sex }}</td>
+                    <td>{{ $item->state == 1 ? "Hoạt động" : "Khóa" }}</td>
+                    <td>{{ $item->sex ? $item->sex : '--' }}</td>
                     <td>
                         <a href="{{ route('admin.user.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
 {{--                        <a href="javascript:void(0)" onclick="destroy( {{$item->id, 'user'}})" class="btn btn-danger"> Xóa</a>--}}

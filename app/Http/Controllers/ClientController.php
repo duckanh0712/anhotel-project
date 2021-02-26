@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 use Session;
 use App\Room;
 use App\RoomBook;
@@ -18,6 +19,15 @@ class ClientController extends Controller
     public function registerForm(){
         return view('auth.register');
     }
+
+    public function showProfile ($id)
+    {
+        $user = User::findorFail($id);
+        $room_books = User::findorFail($id)->roomBook;
+//        dd($room_books);
+        return view('client.users.profile', [ 'data' => $user, 'room_books' => $room_books ]);
+    }
+
     public function roomBookStore (Request $request){
 
         $user_id = Auth::user()->id;
