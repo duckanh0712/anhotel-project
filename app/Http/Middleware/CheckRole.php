@@ -17,12 +17,8 @@ class CheckRole
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth::user()->role == 'GUEST'){
-                dd(122123132132132);
-                return redirect()->route('client.home');
-            }
-            return $next($request);
 
+            return $next($request);
         }else{
 
             return redirect()->route('admin.login');

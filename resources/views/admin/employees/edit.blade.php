@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
-@section('title','Sửa khách hàng');
+@section('title','Cập nhật thông tin');
 @section('content')
     <div class="card card-info col-6" >
         <div class="card-header">
-            <h3 class="card-title">Sửa nhân viên</h3>
+            <h3 class="card-title">Cập nhật nhân viên</h3>
         </div>
         <div class="">
             <form action="{{route('admin.employee.update',[ 'user' => $data->id])}}" method="post">
@@ -49,22 +49,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" value="{{$data->password}}">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Nhập lại mật khẩu">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="input-group mb-3">--}}
+{{--                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" value="{{$data->password}}">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <div class="input-group-text">--}}
+{{--                            <span class="fas fa-lock"></span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
                 <div class="row">
                     <div class="col-8">
                     <div class="form-group">
@@ -79,7 +72,7 @@
 
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-6">
                         <button type="submit" class="btn btn-primary btn-block">Lưu thay đổi</button>
                     </div>
                     <!-- /.col -->

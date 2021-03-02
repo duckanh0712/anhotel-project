@@ -55,9 +55,13 @@ class RoomController extends Controller
     }
 
     public function update (Request $request, $id) {
+
+
+
         $room = Room::findorFail($id);
         $room->name = $request->name;
         $room->state = $request->state;
+        $room->price = $request->price;
         $room->description = $request->description;
         $room->category = $request->category;
 

@@ -20,12 +20,31 @@ class ClientController extends Controller
         return view('auth.register');
     }
 
-    public function showProfile ($id)
+    public function update (Request $request) {
+
+        $user = User::findorFail(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->birthday = $request->birthday;
+        $user->sex = $request->sex;
+        $user->save();
+        if ($user->save()){
+            Session::flash('success', $user->name.' cập nhật thành công!');
+            return redirect()->route('client.profile');
+        }else {
+            Session::flash('error', $user->name.' cập nhật thất bại!');
+            return redirect()->route('client.profile');
+        }
+
+
+    }
+    public function showProfile ()
     {
-        $user = User::findorFail($id);
-        $room_books = User::findorFail($id)->roomBook;
+
+        $room_books = User::findorFail(Auth::user()->id)->roomBook;
 //        dd($room_books);
-        return view('client.users.profile', [ 'data' => $user, 'room_books' => $room_books ]);
+        return view('client.users.profile', [ 'room_books' => $room_books ]);
     }
 
     public function roomBookStore (Request $request){
@@ -46,12 +65,12 @@ class ClientController extends Controller
             if ( $room->save()){
 
                 Session::flash('success',' Đăng ký phòng thành công!');
-                return redirect()->route('client.home');
+                return redirect()->route('client.profile');
             }else {
                 Session::flash('error', ' Đăng ký phòng thất bại!');
-                return redirect()->route('client.home');
+                return redirect()->route('client.profile');
             }
-            return redirect()->route('client.home');
+            return redirect()->route('client.profile');
         }
 
 

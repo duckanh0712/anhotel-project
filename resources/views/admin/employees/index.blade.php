@@ -19,7 +19,9 @@
             <h3 class="card-title">Danh sách nhân viên</h3>
 
             <div class="card-tools">
-                <a href="{{route('admin.employee.create')}}" class="btn btn-primary">Thêm mới</a>
+               @if( Auth::user()->role == 'ADMIN')
+                    <a href="{{route('admin.employee.create')}}" class="btn btn-primary">Thêm mới</a>
+                @endif
             </div>
         </div>
         <!-- /.card-header -->
@@ -47,7 +49,7 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->sex }}</td>
                     <td>
-                        <a href="{{ route('admin.employee.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>
+{{--                        <a href="{{ route('admin.employee.edit', ['id'=> $item->id]) }}" class="btn btn-primary fas fa-edit"> Sửa</a>--}}
 {{--                        <button href="javascript:void(0)" onclick="destroy( {{$item->id , 'employee'}})" class="btn btn-danger fas fa-trash"> Xóa</button>--}}
 {{----}}
                     </td>

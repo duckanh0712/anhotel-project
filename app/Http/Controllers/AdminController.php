@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Room;
 use App\RoomBook;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +13,26 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function index () {
-        return view('admin.layouts.main');
+
+        $numRoomBook = RoomBook::where('state', '<', 3)->count();
+        $numRoom = Room::count();
+        $numEmployee = Employee::where('role','EMPLOYEE')->count();
+        $numUser = User::where('role','GUEST')->count(); //
+
+        $data = [
+            'numRoomBook' => $numRoomBook,
+            'numRoom' => $numRoom,
+            'numEmployee' => $numEmployee,
+            'numUser' => $numUser
+        ];
+
+        return view('admin.dashboard',  $data);
+
+    }
+
+    public function showProfile ()
+    {
+        return view('admin.employees.profile');
     }
 
     public function showAdminLoginForm()

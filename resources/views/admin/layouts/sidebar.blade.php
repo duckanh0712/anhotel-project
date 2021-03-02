@@ -14,7 +14,7 @@
             </div>
             <div class="info">
                 @if(Auth::check())
-                <a href="/backend/#" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
                     @endif
             </div>
         </div>
@@ -54,6 +54,14 @@
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Quản lý khách hàng
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('room_book.statistics')}}" class="nav-link">
+                        <i class="nav-icon fas fa-inbox"></i>
+                        <p>
+                            Thống kê doanh thu
                         </p>
                     </a>
                 </li>

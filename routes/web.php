@@ -20,19 +20,23 @@ Route::post('/login', 'AdminController@postLogin')->name('admin.postLogin');
 Route::get('/register', 'ClientController@registerForm')->name('register');
 Route::post('/register', 'UserController@store')->name('admin.register');
 Route::get('/', 'ClientController@index')->name('client.home');
-Route::get('/user/profile/{id}', 'ClientController@showProfile')->name('client.profile');
+Route::get('/user/profile', 'ClientController@showProfile')->name('client.profile')->middleware('CheckRole');
+Route::post('/user/update', 'ClientController@update')->name('user.update')->middleware('CheckRole');
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::post('admin/room-book/approve', 'RoomBookcontroller@approveRoomBook')->name('admin.room-book.approve')->middleware('CheckLogin');
 Route::post('/room-book/register', 'ClientController@roomBookStore')->name('user.room.book')->middleware('CheckLogin');
+Route::get('/room-book/statistics', 'RoomBookController@statistics')->name('room_book.statistics')->middleware('CheckLogin');
 Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin' ], function (){
     Route::resource('/employee','EmployeeController');
     Route::resource('/user','UserController');
     Route::resource('/room','RoomController');
     Route::resource('/room-book','RoomBookController');
-    Route::get('/room-book/pay/{id}', 'RoomBookController@paymentForm' )->name('room_book.pay.form');
-    Route::post('/room-book/pay/{id}', 'RoomBookController@payment' )->name('room_book.pay');
-});
+    Route::get('/room-book/pay/{id}', 'RoomBookController@paymentForm')->name('room_book.pay.form');
+    Route::post('/room-book/pay/{id}', 'RoomBookController@payment')->name('room_book.pay');
 
+
+});
+Route::get('/employee/profile', 'AdminController@showProfile')->name('admin.profile')->middleware('CheckLogin');
 Route::get('/lienket', function () {
     $data = App\RoomBook::find(1)->khachhang->toArray();
     dd($data);

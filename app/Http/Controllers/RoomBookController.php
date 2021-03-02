@@ -66,6 +66,17 @@ class RoomBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function statistics ()
+    {
+
+        $roombook = RoomBook::where('state' , 3 )->latest()->paginate(20);
+        $price = 0;
+        foreach ( $roombook as $key => $item){
+           $price = $price + $item->total_price;
+        }
+        return view('admin.statistics.index', [ 'data' => $roombook , 'total_price' => $price]);
+    }
+
     public function create()
     {
         //
