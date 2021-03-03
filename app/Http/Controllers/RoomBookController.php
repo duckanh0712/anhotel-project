@@ -54,10 +54,10 @@ class RoomBookController extends Controller
             $room->state = 1;
             $room-> save();
             Session::flash('success', ' Khách hàng '.$roombook->khachhang->name.' thanh toán thành công!');
-            return redirect()->route('admin.room.index');
+            return redirect()->route('admin.room-book.index');
         }else {
             Session::flash('error',  'khách hàng '.$roombook->khachhang->name.' thanh toán thất bại');
-            return redirect()->route('admin.room.index');
+            return redirect()->route('admin.room-book.index');
         }
         return redirect()->route('admin.room-book.index');
     }
