@@ -57,21 +57,8 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="role" id="role" value="EMPLOYEE">
+{{--                <input type="hidden" name="role" id="role" value="EMPLOYEE">--}}
                 <div class="row">
-{{--                    <div class="col-8">--}}
-{{--                    <div class="form-group">--}}
-{{--                        <div class="custom-control custom-radio">--}}
-{{--                            <input class="custom-control-input" type="radio" id="customRadio1" value="Nam" name="sex">--}}
-{{--                            <label for="customRadio1" class="custom-control-label">Nam</label>--}}
-{{--                        </div>--}}
-{{--                        <div class="custom-control custom-radio">--}}
-{{--                            <input class="custom-control-input" type="radio" id="customRadio2" value="Nữ" name="sex" checked="">--}}
-{{--                            <label for="customRadio2" class="custom-control-label">Nữ</label>--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-                    <!-- /.col -->
                     <div class="col-2">
                         <button type="submit" class="btn btn-primary btn-block">Tạo </button>
                     </div>

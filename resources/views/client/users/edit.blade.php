@@ -41,22 +41,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" value="{{$data->password}}">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Nhập lại mật khẩu">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="input-group mb-3">--}}
+{{--                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" value="{{$data->password}}">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <div class="input-group-text">--}}
+{{--                            <span class="fas fa-lock"></span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="input-group mb-3">--}}
+{{--                    <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Nhập lại mật khẩu">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <div class="input-group-text">--}}
+{{--                            <span class="fas fa-lock"></span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="row">
                     <div class="col-8">
                     <div class="form-group">
