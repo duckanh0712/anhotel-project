@@ -49,6 +49,21 @@ class ClientController extends Controller
 
     public function roomBookStore (Request $request){
 
+        $request->validate([
+            'start_date' => 'after:yesterday|before_or_equal:tomorrow'
+        ],[
+            'start_date.after' => 'Chỉ có thể bắt đầu từ hôm nay chở đi.',
+            'start_date.before_or_equal' => 'Chỉ đặt trước 1 ngày'
+        ]);
+
+            //        $request->validate([
+//            'start_date' => 'after:tomorrow',
+//            'end_date' => 'after:start_date'
+//        ],[
+//            'start_date.after' => 'Ngày bắt đầu không đúng.',
+//            'end_date.after' => 'Ngày kết thúc không đúng.'
+//        ]);
+
         $user_id = Auth::user()->id;
         $room_book = new RoomBook();
         $room_book->room_id = $request->room_id;

@@ -192,7 +192,7 @@
                                                                     <td>{{ number_format($item->room->price,0,",",".").' đ' }}</td>
                                                                     @if($item->state == 3)
                                                                         <td>Đã xong</td>
-                                                                    @elseif ($item->state == 2 )
+                                                                    @elseif ($item->state == 1 )
                                                                         <td> đã duyệt</td>
                                                                     @else <td>Chờ duyệt</td>
                                                                     @endif

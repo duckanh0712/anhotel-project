@@ -21,7 +21,7 @@ class CheckLogin
                 return $next($request);
 
             }else{
-                dd($request->path());
+
                 return redirect()->route('client.home');
             }
 

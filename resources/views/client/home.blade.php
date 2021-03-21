@@ -22,6 +22,15 @@
 
                     <h2>Hệ thống phòng Anhotel</h2>
             </div>
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible col-6">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-warning"></i> Lỗi!</h4>
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             @if ( Session::has('error') )
                 <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

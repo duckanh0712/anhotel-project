@@ -143,6 +143,20 @@ class RoomBookController extends Controller
         return redirect()->route('admin.room-book.index');
     }
 
+    public function filterDate(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $roombook = RoomBook::where('state' , 3 )->whereBetween('updated_at', [$start_date, $end_date])->latest()->paginate(20);
+        $price = 0;
+        foreach ( $roombook as $key => $item){
+            $price = $price + $item->total_price;
+        }
+        return view('admin.statistics.index',[ 'data' => $roombook, 'total_price' => $price,'start_date' => $start_date, 'end_date' => $end_date]);
+    }
+
+
+
     /**
      * Remove the specified resource from storage.
      *
