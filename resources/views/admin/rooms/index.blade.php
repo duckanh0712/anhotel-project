@@ -16,7 +16,7 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
-            <h3 class="card-title">Danh sách nhân viên</h3>
+            <h3 class="card-title">Danh sách phòng</h3>
 
             <div class="card-tools">
                 <a href="{{route('admin.room.create')}}" class="btn btn-primary fas">Thêm mới</a>
