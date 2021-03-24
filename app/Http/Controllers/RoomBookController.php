@@ -157,7 +157,13 @@ class RoomBookController extends Controller
     public function filter(Request $request)
     {
 //        $category = $request->category;
-        $roombook = RoomBook::where('state' , 3 )->where('category', 'like', '%' .'thuong' . '%')->latest()->paginate(20);
+        $roombook = RoomBook::where('state' , 3 )->latest()->paginate(20);
+        foreach ($roombook as $room)
+        {
+
+            $rooms = $room->room->where('category', 'like', '%' .'thuong' . '%');
+            // Do something with $product and $minPrice
+        }
         $price = 0;
         foreach ( $roombook as $key => $item){
             $price = $price + $item->total_price;

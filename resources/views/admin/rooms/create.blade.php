@@ -47,8 +47,8 @@
             <div class="form-group">
                 <label>Loại Phòng</label>
                 <select class="form-control" id="category" required name="category">
-                    <option value="Đơn">Đơn</option>
-                    <option value="Đôi">Đôi</option>
+                    <option value="don">Đơn</option>
+                    <option value="doi">Đôi</option>
                     <option value="Thương gia">Thương gia</option>
                 </select>
             </div>

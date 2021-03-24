@@ -26,8 +26,8 @@
         <form class="col-6" action="{{route('room.filter')}}"><div class="form-group">
                 <label>Loại Phòng</label>
                 <select class="form-control" id="category" required name="category">
-                    <option value="don">Đơn</option>
-                    <option value="doi">Đôi</option>
+                    <option value="Don">Đơn</option>
+                    <option value="Doi">Đôi</option>
                     <option value="thuong">Thương gia</option>
                 </select>
             </div>

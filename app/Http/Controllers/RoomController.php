@@ -87,7 +87,7 @@ class RoomController extends Controller
     }
     public function filter (Request $request)
     {
-//        dd($request->get('category'));
+
         $rooms = Room::where('category', 'like', '%' .$request->get('category') . '%')->get();
 
         return view('admin.rooms.index', [ 'data' => $rooms ]);
