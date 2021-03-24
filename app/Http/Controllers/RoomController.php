@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class RoomController extends Controller
@@ -83,6 +84,14 @@ class RoomController extends Controller
         ];
 
         return response()->json($dataResp, 200);
+    }
+    public function filter (Request $request)
+    {
+//        dd($request->get('category'));
+        $rooms = Room::where('category', 'like', '%' .$request->get('category') . '%')->get();
+
+        return view('admin.rooms.index', [ 'data' => $rooms ]);
+
     }
 }
 

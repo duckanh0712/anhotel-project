@@ -2,6 +2,7 @@
 @section('title','Quản lý phòng')
 @section('content')
     <div class="card">
+
         <div class="card-header">
             @if ( Session::has('error') )
                 <div class="alert alert-danger alert-dismissible">
@@ -22,6 +23,17 @@
                 <a href="{{route('admin.room.create')}}" class="btn btn-primary fas">Thêm mới</a>
             </div>
         </div>
+        <form class="col-6" action="{{route('room.filter')}}"><div class="form-group">
+                <label>Loại Phòng</label>
+                <select class="form-control" id="category" required name="category">
+                    <option value="don">Đơn</option>
+                    <option value="doi">Đôi</option>
+                    <option value="thuong">Thương gia</option>
+                </select>
+            </div>
+            <button class="btn btn-primary">lọc</button>
+        </form>
+
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">

@@ -27,6 +27,8 @@ Route::post('admin/room-book/approve', 'RoomBookcontroller@approveRoomBook')->na
 Route::post('/room-book/register', 'ClientController@roomBookStore')->name('user.room.book')->middleware('CheckLogin');
 Route::get('/room-book/statistics', 'RoomBookController@statistics')->name('room_book.statistics')->middleware('CheckLogin');
 Route::post('/room-book/statistics/filter', 'RoomBookController@filterDate')->name('room-book.statistics.filter')->middleware('CheckLogin');
+Route::get('/search', 'RoomController@filter')->name('room.filter')->middleware('CheckLogin');
+Route::post('/room-book/statistics/filterCat', 'RoomBookController@filterDate')->name('room-book.cat.filter')->middleware('CheckLogin');
 
 Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => 'CheckLogin' ], function (){
     Route::resource('/employee','EmployeeController');

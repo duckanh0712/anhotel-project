@@ -147,7 +147,17 @@ class RoomBookController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
-        $roombook = RoomBook::where('state' , 3 )->whereBetween('end_date', [$start_date, $end_date])->latest()->paginate(20);
+        $roombook = RoomBook::where('state' , 3 )->whereBetween('end_date', [$start_date, $end_date])->where('category' )->latest()->paginate(20);
+        $price = 0;
+        foreach ( $roombook as $key => $item){
+            $price = $price + $item->total_price;
+        }
+        return view('admin.statistics.index',[ 'data' => $roombook, 'total_price' => $price,'start_date' => $start_date, 'end_date' => $end_date]);
+    }
+    public function filter(Request $request)
+    {
+//        $category = $request->category;
+        $roombook = RoomBook::where('state' , 3 )->where('category', 'like', '%' .'thuong' . '%')->latest()->paginate(20);
         $price = 0;
         foreach ( $roombook as $key => $item){
             $price = $price + $item->total_price;

@@ -26,6 +26,15 @@
                             </div>
 
                         </form>
+            <form class="col-3" action="{{route('room-book.cat.filter')}}" method="post"><div class="form-group">
+                    @csrf
+                    <label>Loại Phòng</label>
+                    <select class="form-control" id="category" required name="category">
+                        <option value="thuong">Thương gia</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">lọc</button>
+            </form>
         </div>
     </div>
     <div class="card-body table-responsive p-0">
